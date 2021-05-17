@@ -8,10 +8,6 @@ public class ArbolBinario {
 		raiz = null;
 	}
 	
-	public ArbolBinario(Nodo r) {
-		this.raiz = r;
-	}
-	
 	public void insertarNodo(int valor) {
 		Nodo nuevo = new Nodo(valor);
 		if(esVacio()) {
