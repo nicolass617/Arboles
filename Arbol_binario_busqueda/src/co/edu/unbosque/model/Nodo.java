@@ -35,6 +35,17 @@ public class Nodo {
 	public void setHijoDer(Nodo hijoDer) {
 		this.hijoDer = hijoDer;
 	}
+	
+	
+	 public int nodosCompletos(Nodo n) {
+	        if (n == null)
+	            return 0;
+	        else {
+	            if (n.getHijoIzq() != null && n.getHijoDer() != null)
+	                return nodosCompletos(n.getHijoIzq()) + nodosCompletos(n.getHijoDer()) + 1;
+	            return nodosCompletos(n.getHijoIzq()) + nodosCompletos(n.getHijoDer());
+	        }
+	    }
 
 	@Override
 	public String toString() {

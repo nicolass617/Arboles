@@ -3,9 +3,11 @@ package co.edu.unbosque.model;
 public class ArbolBinario {
 	
 	private Nodo raiz;
+	private String orden;
 	
 	public ArbolBinario() {
-		raiz = null;
+		this.raiz = null;
+		this.orden = "";
 	}
 	
 	public void insertarNodo(int valor) {
@@ -35,7 +37,8 @@ public class ArbolBinario {
 	}
 	
 	public Nodo buscarNodo(int v) {
-        Nodo aux = raiz;
+		if(raiz == null) return null;
+		Nodo aux = raiz;
         while(aux.getValor() != v) {
             if(v < aux.getValor()) {
                 aux = aux.getHijoIzq();
@@ -50,7 +53,8 @@ public class ArbolBinario {
     }
 
     public boolean eliminar(int v) {
-        Nodo aux = raiz;
+    	if(raiz == null) return false;
+    	Nodo aux = raiz;
         Nodo padre = raiz;
         boolean izq = true;
         while(aux.getValor() != v) {
@@ -121,26 +125,30 @@ public class ArbolBinario {
     }
 
     public void inOrden(Nodo n) {
+
         if(n != null) {
             inOrden(n.getHijoIzq());
-            System.out.println(n.getValor());
+            orden+= n.getValor()+"\t  \t";
             inOrden(n.getHijoDer());
         }
     }
 
     public void preOrden(Nodo n) {
+    	
         if(n != null) {
-            System.out.println(n.getValor());
+            orden+= n.getValor()+"\t  \t";
             inOrden(n.getHijoIzq());
             inOrden(n.getHijoDer());
         }
+   
     }
 
     public void posOrden(Nodo n) {
+
         if(n != null) {
             inOrden(n.getHijoIzq());
             inOrden(n.getHijoDer());
-            System.out.println(n.getValor());
+            orden+= n.getValor()+"\t  \t";
         }
     }
 	
@@ -151,5 +159,15 @@ public class ArbolBinario {
 	public Nodo getRaiz() {
 		return raiz;
 	}
+
+	public String getOrden() {
+		return orden;
+	}
+
+	public void setOrden(String orden) {
+		this.orden = orden;
+	}
+	
+	
 	
 }
